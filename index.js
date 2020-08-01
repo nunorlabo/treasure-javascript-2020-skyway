@@ -16,10 +16,6 @@
     peer.on('open', () => {
         document.getElementById('my-id').textContent = peer.id;
     });
-    peer.on('call', mediaConnection => {
-        mediaConnection.answer(localStream);
-        setEventListener(mediaConnection);
-    });
 
     // 発信処理
     document.getElementById('make-call').onclick = () => {
@@ -37,4 +33,9 @@
             videoElm.play();
         });
     }
+
+    peer.on('call', mediaConnection => {
+        mediaConnection.answer(localStream);
+        setEventListener(mediaConnection);
+    });
 })();
